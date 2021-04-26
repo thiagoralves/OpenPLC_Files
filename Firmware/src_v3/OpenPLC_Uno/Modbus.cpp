@@ -1,6 +1,6 @@
 /*
     Modbus.cpp - Source for Modbus Base Library
-    Copyright (C) 2014 André Sarmento Barbosa
+    Copyright (C) 2014 AndrÃ© Sarmento Barbosa
 */
 #include "Modbus.h"
 
@@ -496,8 +496,8 @@ void Modbus::writeMultipleCoils(byte* frame,word startreg, word numoutputs, byte
     byte bitn = 0;
     word totoutputs = numoutputs;
     word i;
-	while (numoutputs--) {
-        i = (totoutputs - numoutputs) / 8;
+	while (numoutputs) {
+        i = (totoutputs - numoutputs--) / 8;
         this->Coil(startreg, bitRead(frame[6+i], bitn));
         //increment the bit index
         bitn++;
